@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C386F6E82C07E2FB00B5562D /* MensaAdvisory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6E72C07E2FB00B5562D /* MensaAdvisory.swift */; };
+		C386F6EA2C07E2FB00B5562D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6E92C07E2FB00B5562D /* ContentView.swift */; };
+		C386F6EC2C07E2FC00B5562D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C386F6EB2C07E2FC00B5562D /* Assets.xcassets */; };
+		C386F6EF2C07E2FC00B5562D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C386F6EE2C07E2FC00B5562D /* Preview Assets.xcassets */; };
+		C386F6F92C07E2FC00B5562D /* mensa_ai_advisoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6F82C07E2FC00B5562D /* mensa_ai_advisoryTests.swift */; };
+		C386F7032C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F7022C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift */; };
+		C386F7052C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F7042C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C386F6F52C07E2FC00B5562D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C386F6DC2C07E2FB00B5562D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C386F6E32C07E2FB00B5562D;
+			remoteInfo = "mensa-ai-advisory";
+		};
+		C386F6FF2C07E2FC00B5562D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C386F6DC2C07E2FB00B5562D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C386F6E32C07E2FB00B5562D;
+			remoteInfo = "mensa-ai-advisory";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C386F6E42C07E2FB00B5562D /* mensa-ai-advisory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mensa-ai-advisory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C386F6E72C07E2FB00B5562D /* MensaAdvisory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaAdvisory.swift; sourceTree = "<group>"; };
+		C386F6E92C07E2FB00B5562D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C386F6EB2C07E2FC00B5562D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C386F6EE2C07E2FC00B5562D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C386F6F42C07E2FC00B5562D /* mensa-ai-advisoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mensa-ai-advisoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C386F6F82C07E2FC00B5562D /* mensa_ai_advisoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryTests.swift; sourceTree = "<group>"; };
+		C386F6FE2C07E2FC00B5562D /* mensa-ai-advisoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mensa-ai-advisoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C386F7022C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITests.swift; sourceTree = "<group>"; };
+		C386F7042C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C386F6E12C07E2FB00B5562D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6F12C07E2FC00B5562D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6FB2C07E2FC00B5562D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C386F6DB2C07E2FB00B5562D = {
+			isa = PBXGroup;
+			children = (
+				C386F6E62C07E2FB00B5562D /* mensa-ai-advisory */,
+				C386F6F72C07E2FC00B5562D /* mensa-ai-advisoryTests */,
+				C386F7012C07E2FC00B5562D /* mensa-ai-advisoryUITests */,
+				C386F6E52C07E2FB00B5562D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C386F6E52C07E2FB00B5562D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C386F6E42C07E2FB00B5562D /* mensa-ai-advisory.app */,
+				C386F6F42C07E2FC00B5562D /* mensa-ai-advisoryTests.xctest */,
+				C386F6FE2C07E2FC00B5562D /* mensa-ai-advisoryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C386F6E62C07E2FB00B5562D /* mensa-ai-advisory */ = {
+			isa = PBXGroup;
+			children = (
+				C386F6E72C07E2FB00B5562D /* MensaAdvisory.swift */,
+				C386F6E92C07E2FB00B5562D /* ContentView.swift */,
+				C386F6EB2C07E2FC00B5562D /* Assets.xcassets */,
+				C386F6ED2C07E2FC00B5562D /* Preview Content */,
+			);
+			path = "mensa-ai-advisory";
+			sourceTree = "<group>";
+		};
+		C386F6ED2C07E2FC00B5562D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C386F6EE2C07E2FC00B5562D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C386F6F72C07E2FC00B5562D /* mensa-ai-advisoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				C386F6F82C07E2FC00B5562D /* mensa_ai_advisoryTests.swift */,
+			);
+			path = "mensa-ai-advisoryTests";
+			sourceTree = "<group>";
+		};
+		C386F7012C07E2FC00B5562D /* mensa-ai-advisoryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C386F7022C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift */,
+				C386F7042C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift */,
+			);
+			path = "mensa-ai-advisoryUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C386F6E32C07E2FB00B5562D /* mensa-ai-advisory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C386F7082C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisory" */;
+			buildPhases = (
+				C386F6E02C07E2FB00B5562D /* Sources */,
+				C386F6E12C07E2FB00B5562D /* Frameworks */,
+				C386F6E22C07E2FB00B5562D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mensa-ai-advisory";
+			productName = "mensa-ai-advisory";
+			productReference = C386F6E42C07E2FB00B5562D /* mensa-ai-advisory.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C386F6F32C07E2FC00B5562D /* mensa-ai-advisoryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C386F70B2C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisoryTests" */;
+			buildPhases = (
+				C386F6F02C07E2FC00B5562D /* Sources */,
+				C386F6F12C07E2FC00B5562D /* Frameworks */,
+				C386F6F22C07E2FC00B5562D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C386F6F62C07E2FC00B5562D /* PBXTargetDependency */,
+			);
+			name = "mensa-ai-advisoryTests";
+			productName = "mensa-ai-advisoryTests";
+			productReference = C386F6F42C07E2FC00B5562D /* mensa-ai-advisoryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C386F6FD2C07E2FC00B5562D /* mensa-ai-advisoryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C386F70E2C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisoryUITests" */;
+			buildPhases = (
+				C386F6FA2C07E2FC00B5562D /* Sources */,
+				C386F6FB2C07E2FC00B5562D /* Frameworks */,
+				C386F6FC2C07E2FC00B5562D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C386F7002C07E2FC00B5562D /* PBXTargetDependency */,
+			);
+			name = "mensa-ai-advisoryUITests";
+			productName = "mensa-ai-advisoryUITests";
+			productReference = C386F6FE2C07E2FC00B5562D /* mensa-ai-advisoryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C386F6DC2C07E2FB00B5562D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					C386F6E32C07E2FB00B5562D = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					C386F6F32C07E2FC00B5562D = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = C386F6E32C07E2FB00B5562D;
+					};
+					C386F6FD2C07E2FC00B5562D = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = C386F6E32C07E2FB00B5562D;
+					};
+				};
+			};
+			buildConfigurationList = C386F6DF2C07E2FB00B5562D /* Build configuration list for PBXProject "MensaAdvisory" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C386F6DB2C07E2FB00B5562D;
+			productRefGroup = C386F6E52C07E2FB00B5562D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C386F6E32C07E2FB00B5562D /* mensa-ai-advisory */,
+				C386F6F32C07E2FC00B5562D /* mensa-ai-advisoryTests */,
+				C386F6FD2C07E2FC00B5562D /* mensa-ai-advisoryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C386F6E22C07E2FB00B5562D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C386F6EF2C07E2FC00B5562D /* Preview Assets.xcassets in Resources */,
+				C386F6EC2C07E2FC00B5562D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6F22C07E2FC00B5562D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6FC2C07E2FC00B5562D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C386F6E02C07E2FB00B5562D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C386F6EA2C07E2FB00B5562D /* ContentView.swift in Sources */,
+				C386F6E82C07E2FB00B5562D /* MensaAdvisory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6F02C07E2FC00B5562D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C386F6F92C07E2FC00B5562D /* mensa_ai_advisoryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C386F6FA2C07E2FC00B5562D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C386F7052C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift in Sources */,
+				C386F7032C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C386F6F62C07E2FC00B5562D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C386F6E32C07E2FB00B5562D /* mensa-ai-advisory */;
+			targetProxy = C386F6F52C07E2FC00B5562D /* PBXContainerItemProxy */;
+		};
+		C386F7002C07E2FC00B5562D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C386F6E32C07E2FB00B5562D /* mensa-ai-advisory */;
+			targetProxy = C386F6FF2C07E2FC00B5562D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C386F7062C07E2FC00B5562D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C386F7072C07E2FC00B5562D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C386F7092C07E2FC00B5562D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mensa-ai-advisory/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisory";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C386F70A2C07E2FC00B5562D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mensa-ai-advisory/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisory";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C386F70C2C07E2FC00B5562D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisoryTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mensa-ai-advisory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mensa-ai-advisory";
+			};
+			name = Debug;
+		};
+		C386F70D2C07E2FC00B5562D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisoryTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mensa-ai-advisory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mensa-ai-advisory";
+			};
+			name = Release;
+		};
+		C386F70F2C07E2FC00B5562D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisoryUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mensa-ai-advisory";
+			};
+			name = Debug;
+		};
+		C386F7102C07E2FC00B5562D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisoryUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mensa-ai-advisory";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C386F6DF2C07E2FB00B5562D /* Build configuration list for PBXProject "MensaAdvisory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C386F7062C07E2FC00B5562D /* Debug */,
+				C386F7072C07E2FC00B5562D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C386F7082C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C386F7092C07E2FC00B5562D /* Debug */,
+				C386F70A2C07E2FC00B5562D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C386F70B2C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisoryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C386F70C2C07E2FC00B5562D /* Debug */,
+				C386F70D2C07E2FC00B5562D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C386F70E2C07E2FC00B5562D /* Build configuration list for PBXNativeTarget "mensa-ai-advisoryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C386F70F2C07E2FC00B5562D /* Debug */,
+				C386F7102C07E2FC00B5562D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C386F6DC2C07E2FB00B5562D /* Project object */;
+}
