@@ -26,7 +26,7 @@ class WebpageFetcher: ObservableObject {
                 let content = try paragraph.text()
                 
                 let dateString = formatter.string(from: date)
-                // let dateString = "29.10.2024"
+                // let dateString = "04.11.2024"
                 let additionalFilter = "Abendmensa"
                 if content.range(of: dateString, options: .regularExpression) != nil && !(content.range(of: additionalFilter, options: .regularExpression) != nil)
                 {

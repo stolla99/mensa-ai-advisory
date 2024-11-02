@@ -12,6 +12,20 @@ struct MenuItem {
     let title: String
 }
 
+enum ModalType {
+    case error
+    case yesNo
+    case okOnly
+    
+}
+
+struct AlertDetails: Identifiable {
+    let modalType: ModalType
+    let errorDescription: String
+    let queryDate: Date
+    let id = UUID()
+}
+
 let menuItems = [
     MenuItem(iconName: "bubble.right.fill", title: "Today"),
     MenuItem(iconName: "flask.fill", title: "Experimental"),
@@ -20,26 +34,18 @@ let menuItems = [
 ]
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @ObservedObject private var sharedData = CoreDataStack.shared
+    
     @StateObject private var webFetcher = WebpageFetcher()
     @StateObject private var openAiFetcher = OpenAiFetcher()
     
+    @State private var isShowingAlert: Bool = false
+    @State private var details: AlertDetails = AlertDetails(modalType: .error, errorDescription: "Default", queryDate: Date.distantPast)
+    @State private var alertMessage: String = ""
+    @State private var overrideOnce: Bool = false
+    
     @State private var activeMenu: String = "Today"
-    @State private var contentItems = [
-        ContentTemplateView(
-            title: "looooooooooooooong lo lo lo looooooooooooooong title",
-            date: "October 26, 2024",
-            timestamp: "10:00 AM",
-            content: """
-            **looooooooooooooong title** 
-            *explanation* • *price*
-            
-            **title** 
-            *explanation* • *price*
-            \n
-            summary
-            """
-        )
-    ]
     
     let mealTemplate = """
         **{title}** 
@@ -47,15 +53,16 @@ struct ContentView: View {
         \n
         """
     
-    private func retrieveLatestMensaData() async -> MealResponse {
+    private func retrieveLatestMensaData(queryDate: Date) async -> MealResponse {
         do {
-            try await webFetcher.fetchData(date: Date())
+            try await webFetcher.fetchData(date: queryDate)
             let content: String = webFetcher.responseStrings.joined(separator: "\n")
             let (runThreadJson, _): ([String: Any], Data) = try await openAiFetcher.createAndRunThread(content: content)
             
             let threadId: String = runThreadJson["thread_id"] as! String
             let runId: String = runThreadJson["id"] as! String
             try await openAiFetcher.pollUntilStatusCompleted(threadId: threadId, runId: runId, interval: 1)
+            // let threadId: String = "thread_KW4VFQK4vzyyTqkxK71br2RS"
             let (messagesJson, _): ([String: Any], Data) = try await openAiFetcher.retrieveMessages(threadId: threadId)
             let responseJson: MealResponse = try openAiFetcher.parseMessages(messages: messagesJson)
             return responseJson
@@ -64,21 +71,7 @@ struct ContentView: View {
         }
     }
     
-    private func smoothDecrease(ratio: Double) -> Double {
-        let lower = 0.7
-        let minScale = 0.3
-        if ratio <= lower {
-            return 1.0
-        } else if ratio <= 1.0 {
-            let t = (ratio - lower) / 0.2
-            return 1.0 - minScale * t * t
-        } else {
-            return minScale
-        }
-    }
-    
-    private func getCurrentDateAndTim() -> (date: String, timestamp: String) {
-        let currentDate = Date()
+    private func getCurrentDateAndTime(currentDate: Date) -> (date: String, timestamp: String) {
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
@@ -93,34 +86,94 @@ struct ContentView: View {
         return (date: dateFormatter.string(from: currentDate), timestamp: timeFormatter.string(from: currentDate))
     }
     
-    private func fetchLatestData() async -> Int {
-        let historyCount = 30
-        
-        let newMealResponse: MealResponse = await retrieveLatestMensaData()
-        
-        let (date, timestamp) = getCurrentDateAndTim()
+    private func mapMensaDayToContentTemplateView(mensaDay: MensaDay) -> ContentTemplateView {
+        let (date, timestamp) = getCurrentDateAndTime(currentDate: mensaDay.date ?? Date())
+        let meals: [Meal] = mensaDay.meals?.allObjects as? [Meal] ?? []
         var content = ""
-        for meal: MealResponse.Meal in newMealResponse.meals {
+        for meal: Meal in meals {
             content.append(mealTemplate
-                .replacingOccurrences(of: "{title}", with: meal.title)
-                .replacingOccurrences(of: "{explanation}", with: meal.explanation)
-                .replacingOccurrences(of: "{price}", with: meal.price)
+                .replacingOccurrences(of: "{title}", with: meal.title ?? "")
+                .replacingOccurrences(of: "{explanation}", with: meal.explanation ?? "")
+                .replacingOccurrences(of: "{price}", with: meal.price ?? "")
             )
         }
-        content.append(newMealResponse.comment)
+        content.append(mensaDay.comment ?? "")
         
         let newContent = ContentTemplateView(
-            title: newMealResponse.funny_title,
+            title: mensaDay.funny_title ?? "",
             date: date,
             timestamp: timestamp,
             content: LocalizedStringKey.init(content)
         )
-        
-        contentItems.insert(newContent, at: 0)
-        if (contentItems.count > historyCount) {
-            contentItems.removeLast()
+        return newContent
+    }
+    
+    func mapMensaDaysToMealResponses(mensaDays: [MensaDay]) -> [MealResponse] {
+        return mensaDays.map {
+            let meals: [MealResponse.MealData] = $0.meals?.allObjects as? [MealResponse.MealData] ?? []
+            let mealResponse = MealResponse(
+                meals: meals.map {
+                    return MealResponse.MealData(title: $0.title, explanation: $0.explanation, price: $0.price)
+                },
+                comment: $0.comment ?? "-",
+                funny_title: $0.funny_title ?? "-"
+            )
+            return mealResponse
         }
+    }
+    
+    private func fetchLatestData(queryDate: Date) async -> Int {
+        let newMealResponse: MealResponse = await retrieveLatestMensaData(queryDate: queryDate)
+        sharedData.add(mealResponse: newMealResponse)
         return 1
+    }
+    
+    func isPastTwoPM(on date: Date) -> Bool {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        var twoPMComponents = components
+        twoPMComponents.hour = 14
+        twoPMComponents.minute = 0
+        twoPMComponents.second = 0
+        guard let twoPMDate = calendar.date(from: twoPMComponents) else {
+            return false
+        }
+        return date > twoPMDate
+    }
+
+    
+    private func decidingNextStep(on queryDate: Date) async -> (isAlert: Bool, title: String, message: String, date: Date, type: ModalType) {
+        let alreadyCheckedToday: Bool = sharedData.mensaDays.map {
+            return Calendar.current.isDate(queryDate, inSameDayAs: $0.date ?? Date.distantPast)
+        }.reduce(false, { $0 || $1 })
+        
+        if alreadyCheckedToday {
+            if isPastTwoPM(on: queryDate) {
+                return (
+                    true,
+                    "Information",
+                    "Want to check for tomorrow? If yes next refresh will trigger the fetch data for tomorrow",
+                    Calendar.current.date(byAdding: .day, value: 1, to: queryDate) ?? Date.distantPast,
+                    .yesNo
+                )
+            } else {
+                return (
+                    true,
+                    "Proceed?",
+                    "You already checked the menu today. If proceeding next refresh will trigger the update regardless",
+                    queryDate,
+                    .yesNo
+                )
+            }
+        } else {
+            return (
+                false,
+                "",
+                "",
+                queryDate,
+                .okOnly
+            )
+        }
     }
 
     var body: some View {
@@ -128,19 +181,58 @@ struct ContentView: View {
             if activeMenu == "Today" {
                 ScrollView {
                     LazyVStack(spacing: 0) {
-                        ForEach(contentItems.indices, id: \.self) { index in
-                            contentItems[index]
+                        ForEach(sharedData.mensaDays, id: \.self) { elem in
+                            mapMensaDayToContentTemplateView(mensaDay: elem)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 5)
                         }
                     }
                 }
                 .refreshable {
-                    let task = Task {
-                        await fetchLatestData()
+                    let currentDate = Date()
+                    
+                    var (alertShowing, title, message, queryDate, type) = await decidingNextStep(on: currentDate)
+                    if overrideOnce {
+                        alertShowing = false
+                        title = ""
+                        message = ""
                     }
-                    let result = await task.value
-                    print(result)
+                    
+                    if !alertShowing || overrideOnce {
+                        overrideOnce = false
+                        let task = Task {
+                            await fetchLatestData(queryDate: queryDate)
+                        }
+                        _ = await task.value
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        isShowingAlert = alertShowing
+                        alertMessage = title
+                        details = AlertDetails(modalType: type, errorDescription: message, queryDate: queryDate)
+                    }
+                }
+                .alert(
+                    alertMessage,
+                    isPresented: $isShowingAlert,
+                    presenting: details
+                ) { details in
+                    switch details.modalType {
+                        case .yesNo:
+                        Button("No",  role: .cancel) {
+                                // Replace
+                        }
+                        Button("Yes") {
+                            overrideOnce = true
+                        }
+                        default:
+                            Button("Ok") {}
+                    }
+                } message: { details in
+                    return Text(details.errorDescription + "(" + {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat =  "dd.MM.yyyy"
+                        return formatter.string(from: details.queryDate)
+                    }() + ")")
                 }
             } else if activeMenu == "Experimental" {
                 Text("Experimental")

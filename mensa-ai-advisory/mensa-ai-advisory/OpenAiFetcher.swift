@@ -3,13 +3,13 @@ import HTTPTypes
 import HTTPTypesFoundation
 
 struct MealResponse: Decodable {
-    struct Meal: Decodable {
+    struct MealData: Decodable {
         let title: String
         let explanation: String
         let price: String
     }
 
-    let meals: [Meal]
+    let meals: [MealData]
     let comment: String
     let funny_title: String
 }
