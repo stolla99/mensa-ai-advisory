@@ -2,18 +2,6 @@ import Foundation
 import HTTPTypes
 import HTTPTypesFoundation
 
-struct MealResponse: Decodable {
-    struct MealData: Decodable {
-        let title: String
-        let explanation: String
-        let price: String
-    }
-
-    let meals: [MealData]
-    let comment: String
-    let funny_title: String
-}
-
 enum PollingError: Error {
     case pollingFailed(reason: String)
 }

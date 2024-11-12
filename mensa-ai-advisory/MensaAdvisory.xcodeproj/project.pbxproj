@@ -3,23 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C30D49E02CCD357100D11529 /* WebpageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30D49DF2CCD357100D11529 /* WebpageFetcher.swift */; };
 		C30D49E32CCD37BB00D11529 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C30D49E22CCD37BB00D11529 /* OpenAI */; };
-		C314CBC12CCD0C41005C525B /* ContentTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314CBC02CCD0C41005C525B /* ContentTemplateView.swift */; };
 		C314CBC62CCD1494005C525B /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = C314CBC52CCD1494005C525B /* Down */; };
 		C314CBC82CCD210D005C525B /* Experimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314CBC72CCD210D005C525B /* Experimental.swift */; };
-		C327FBB72CCEA21A00D7FAF6 /* OpenAiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C327FBB62CCEA20D00D7FAF6 /* OpenAiFetcher.swift */; };
 		C32CA34D2CCDAE7500453AE0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C32CA34C2CCDAE7500453AE0 /* Alamofire */; };
 		C32CA34F2CCDAE7500453AE0 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C32CA34E2CCDAE7500453AE0 /* AlamofireDynamic */; };
 		C32CA3512CCDAE9900453AE0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C32CA3502CCDAE9900453AE0 /* Alamofire */; };
 		C32CA3542CCDB2A600453AE0 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C32CA3532CCDB2A600453AE0 /* SwiftSoup */; };
-		C33C05962CD5577B00785699 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33C05952CD5577B00785699 /* CoreDataStack.swift */; };
-		C386F6E82C07E2FB00B5562D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6E72C07E2FB00B5562D /* MainView.swift */; };
-		C386F6EA2C07E2FB00B5562D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6E92C07E2FB00B5562D /* ContentView.swift */; };
 		C386F6EC2C07E2FC00B5562D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C386F6EB2C07E2FC00B5562D /* Assets.xcassets */; };
 		C386F6EF2C07E2FC00B5562D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C386F6EE2C07E2FC00B5562D /* Preview Assets.xcassets */; };
 		C386F6F92C07E2FC00B5562D /* mensa_ai_advisoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C386F6F82C07E2FC00B5562D /* mensa_ai_advisoryTests.swift */; };
@@ -34,6 +28,14 @@
 		C3B0C6292CCFC9BB002FE29C /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0C6282CCFC9BB002FE29C /* HTTPTypes */; };
 		C3B0C62B2CCFC9BB002FE29C /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0C62A2CCFC9BB002FE29C /* HTTPTypesFoundation */; };
 		C3C9294F2CD3E3380093CD0C /* MensaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3C9294D2CD3E3380093CD0C /* MensaModel.xcdatamodeld */; };
+		C3F0EFBA2CD6B7310055BA58 /* OpenAiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFB72CD6B7310055BA58 /* OpenAiFetcher.swift */; };
+		C3F0EFBB2CD6B7310055BA58 /* WebpageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFB82CD6B7310055BA58 /* WebpageFetcher.swift */; };
+		C3F0EFBE2CD6B73B0055BA58 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFBC2CD6B73B0055BA58 /* CoreDataStack.swift */; };
+		C3F0EFC32CD6B7450055BA58 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFC02CD6B7450055BA58 /* ContentView.swift */; };
+		C3F0EFC42CD6B7450055BA58 /* ContentTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFBF2CD6B7450055BA58 /* ContentTemplateView.swift */; };
+		C3F0EFC52CD6B7450055BA58 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFC12CD6B7450055BA58 /* MainView.swift */; };
+		C3F0EFD52CD6BCB50055BA58 /* Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFD42CD6BCA90055BA58 /* Processing.swift */; };
+		C3F0EFDA2CD6BD8D0055BA58 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFD92CD6BD8B0055BA58 /* Mapper.swift */; };
 		C3F97E572CCFB93E0057384F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3F97E562CCFB9310057384F /* Keys.plist */; };
 /* End PBXBuildFile section */
 
@@ -55,14 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C30D49DF2CCD357100D11529 /* WebpageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageFetcher.swift; sourceTree = "<group>"; };
-		C314CBC02CCD0C41005C525B /* ContentTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTemplateView.swift; sourceTree = "<group>"; };
 		C314CBC72CCD210D005C525B /* Experimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experimental.swift; sourceTree = "<group>"; };
-		C327FBB62CCEA20D00D7FAF6 /* OpenAiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAiFetcher.swift; sourceTree = "<group>"; };
-		C33C05952CD5577B00785699 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C386F6E42C07E2FB00B5562D /* mensa-ai-advisory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mensa-ai-advisory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C386F6E72C07E2FB00B5562D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		C386F6E92C07E2FB00B5562D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C386F6EB2C07E2FC00B5562D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C386F6EE2C07E2FC00B5562D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C386F6F42C07E2FC00B5562D /* mensa-ai-advisoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mensa-ai-advisoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,8 +67,20 @@
 		C386F7022C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITests.swift; sourceTree = "<group>"; };
 		C386F7042C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C3C9294E2CD3E3380093CD0C /* MensaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MensaModel.xcdatamodel; sourceTree = "<group>"; };
+		C3F0EFB72CD6B7310055BA58 /* OpenAiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAiFetcher.swift; sourceTree = "<group>"; };
+		C3F0EFB82CD6B7310055BA58 /* WebpageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageFetcher.swift; sourceTree = "<group>"; };
+		C3F0EFBC2CD6B73B0055BA58 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C3F0EFBF2CD6B7450055BA58 /* ContentTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTemplateView.swift; sourceTree = "<group>"; };
+		C3F0EFC02CD6B7450055BA58 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C3F0EFC12CD6B7450055BA58 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C3F0EFD42CD6BCA90055BA58 /* Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processing.swift; sourceTree = "<group>"; };
+		C3F0EFD92CD6BD8B0055BA58 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
 		C3F97E562CCFB9310057384F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		C3F0EFC62CD6BB900055BA58 /* models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = models; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C386F6E12C07E2FB00B5562D /* Frameworks */ = {
@@ -136,14 +144,12 @@
 		C386F6E62C07E2FB00B5562D /* mensa-ai-advisory */ = {
 			isa = PBXGroup;
 			children = (
+				C3F0EFC62CD6BB900055BA58 /* models */,
+				C3F0EFC22CD6B7450055BA58 /* views */,
+				C3F0EFBD2CD6B73B0055BA58 /* core-data */,
+				C3F0EFB92CD6B7310055BA58 /* logic */,
 				C3C9294D2CD3E3380093CD0C /* MensaModel.xcdatamodeld */,
 				C3F97E562CCFB9310057384F /* Keys.plist */,
-				C327FBB62CCEA20D00D7FAF6 /* OpenAiFetcher.swift */,
-				C33C05952CD5577B00785699 /* CoreDataStack.swift */,
-				C30D49DF2CCD357100D11529 /* WebpageFetcher.swift */,
-				C314CBC02CCD0C41005C525B /* ContentTemplateView.swift */,
-				C386F6E72C07E2FB00B5562D /* MainView.swift */,
-				C386F6E92C07E2FB00B5562D /* ContentView.swift */,
 				C314CBC72CCD210D005C525B /* Experimental.swift */,
 				C386F6EB2C07E2FC00B5562D /* Assets.xcassets */,
 				C386F6ED2C07E2FC00B5562D /* Preview Content */,
@@ -176,6 +182,35 @@
 			path = "mensa-ai-advisoryUITests";
 			sourceTree = "<group>";
 		};
+		C3F0EFB92CD6B7310055BA58 /* logic */ = {
+			isa = PBXGroup;
+			children = (
+				C3F0EFD92CD6BD8B0055BA58 /* Mapper.swift */,
+				C3F0EFD42CD6BCA90055BA58 /* Processing.swift */,
+				C3F0EFB72CD6B7310055BA58 /* OpenAiFetcher.swift */,
+				C3F0EFB82CD6B7310055BA58 /* WebpageFetcher.swift */,
+			);
+			path = logic;
+			sourceTree = "<group>";
+		};
+		C3F0EFBD2CD6B73B0055BA58 /* core-data */ = {
+			isa = PBXGroup;
+			children = (
+				C3F0EFBC2CD6B73B0055BA58 /* CoreDataStack.swift */,
+			);
+			path = "core-data";
+			sourceTree = "<group>";
+		};
+		C3F0EFC22CD6B7450055BA58 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				C3F0EFBF2CD6B7450055BA58 /* ContentTemplateView.swift */,
+				C3F0EFC02CD6B7450055BA58 /* ContentView.swift */,
+				C3F0EFC12CD6B7450055BA58 /* MainView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,6 +225,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				C3F0EFC62CD6BB900055BA58 /* models */,
 			);
 			name = "mensa-ai-advisory";
 			productName = "mensa-ai-advisory";
@@ -315,14 +353,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C33C05962CD5577B00785699 /* CoreDataStack.swift in Sources */,
-				C386F6EA2C07E2FB00B5562D /* ContentView.swift in Sources */,
-				C386F6E82C07E2FB00B5562D /* MainView.swift in Sources */,
-				C30D49E02CCD357100D11529 /* WebpageFetcher.swift in Sources */,
+				C3F0EFBE2CD6B73B0055BA58 /* CoreDataStack.swift in Sources */,
+				C3F0EFC32CD6B7450055BA58 /* ContentView.swift in Sources */,
+				C3F0EFDA2CD6BD8D0055BA58 /* Mapper.swift in Sources */,
+				C3F0EFC42CD6B7450055BA58 /* ContentTemplateView.swift in Sources */,
+				C3F0EFD52CD6BCB50055BA58 /* Processing.swift in Sources */,
+				C3F0EFC52CD6B7450055BA58 /* MainView.swift in Sources */,
+				C3F0EFBA2CD6B7310055BA58 /* OpenAiFetcher.swift in Sources */,
+				C3F0EFBB2CD6B7310055BA58 /* WebpageFetcher.swift in Sources */,
 				C3C9294F2CD3E3380093CD0C /* MensaModel.xcdatamodeld in Sources */,
 				C314CBC82CCD210D005C525B /* Experimental.swift in Sources */,
-				C327FBB72CCEA21A00D7FAF6 /* OpenAiFetcher.swift in Sources */,
-				C314CBC12CCD0C41005C525B /* ContentTemplateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
