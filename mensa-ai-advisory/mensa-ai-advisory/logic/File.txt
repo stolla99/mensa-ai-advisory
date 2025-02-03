@@ -1,0 +1,49 @@
+import Security
+
+// MARK: - Store API Key in Keychain
+func storeAPIKey(key: String, value: String) -> Bool {
+    let keyData = Data(value.utf8)
+
+    let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: key,
+        kSecValueData as String: keyData,
+        kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+    ]
+
+    // Delete existing key if present (avoid duplicates)
+    SecItemDelete(query as CFDictionary)
+
+    // Add new API key
+    let status = SecItemAdd(query as CFDictionary, nil)
+    return status == errSecSuccess
+}
+
+// MARK: - Retrieve API Key from Keychain
+func retrieveAPIKey(key: String) -> String? {
+    let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: key,
+        kSecReturnData as String: true,
+        kSecMatchLimit as String: kSecMatchLimitOne
+    ]
+
+    var result: AnyObject?
+    let status = SecItemCopyMatching(query as CFDictionary, &result)
+
+    guard status == errSecSuccess, let data = result as? Data else {
+        return nil
+    }
+
+    return String(data: data, encoding: .utf8)
+}
+
+// MARK: - Delete API Key from Keychain
+func deleteAPIKey(key: String) {
+    let query: [String: Any] = [
+        kSecClass as String: kSecClassGenericPassword,
+        kSecAttrAccount as String: key
+    ]
+
+    SecItemDelete(query as CFDictionary)
+}

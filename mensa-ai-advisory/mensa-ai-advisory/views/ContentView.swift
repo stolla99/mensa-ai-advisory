@@ -9,7 +9,7 @@ import SwiftUI
 
 let menuItems = [
     MenuItem(iconName: "bubble.right.fill", title: "Today"),
-    MenuItem(iconName: "flask.fill", title: "Experimental"),
+    MenuItem(iconName: "map.fill", title: "Experimental"),
     MenuItem(iconName: "gearshape.fill", title: "Settings"),
     MenuItem(iconName: "info.circle.fill", title: "About")
 ]
@@ -22,12 +22,14 @@ struct ContentView: View {
     @StateObject private var webFetcher = WebpageFetcher()
     @StateObject private var openAiFetcher = OpenAiFetcher()
     
+    @State private var tempData: [AlertDetails] = []
     @State private var isShowingAlert: Bool = false
-    @State private var details: AlertDetails = AlertDetails(modalType: ModalType.error, errorDescription: "Default", queryDate: Date.distantPast)
     @State private var alertMessage: String = ""
     @State private var overrideOnce: Bool = false
-    
-    @State private var activeMenu: String = "Today"
+    @State private var activeMenu: String = "Settings"
+    @State private var isViewingKey: Bool = false
+    @State private var keyMask: String = (retrieveKey(key: "OPENAIKEY") ?? "*empty*").map {_ in "*" }.joined()
+    @State private var enforceRefresh = false
     
     let formatter = DateFormatter()
     
@@ -46,7 +48,7 @@ struct ContentView: View {
             let threadId: String = runThreadJson["thread_id"] as! String
             let runId: String = runThreadJson["id"] as! String
             try await openAiFetcher.pollUntilStatusCompleted(threadId: threadId, runId: runId, interval: 1)
-            // let threadId: String = "thread_KW4VFQK4vzyyTqkxK71br2RS"
+            // let threadId: String = "thread_iLncUXg0bFmLp2HxGL5NNM3r"
             let (messagesJson, _): ([String: Any], Data) = try await openAiFetcher.retrieveMessages(threadId: threadId)
             let responseJson: MealResponse = try openAiFetcher.parseMessages(messages: messagesJson)
             return responseJson
@@ -57,71 +59,111 @@ struct ContentView: View {
     
     private func fetchLatestData(queryDate: Date) async -> Int {
         let newMealResponse: MealResponse = await retrieveLatestMensaData(queryDate: queryDate)
-        sharedData.add(mealResponse: newMealResponse)
+        sharedData.add(mealResponse: newMealResponse, queryDate: queryDate)
         return 1
+    }
+    
+    func removeAlertDetails(_ alertDetails: AlertDetails) {
+        if let index = tempData.firstIndex(of: alertDetails) {
+            tempData.remove(at: index)
+        }
     }
 
     var body: some View {
         VStack {
             if activeMenu == "Today" {
-                ScrollView {
-                    LazyVStack(spacing: 0) {
+                VStack(spacing: 0) {
+                    List {
+                        ForEach(tempData, id: \.id) { elem in
+                            AlertTemplateView(element: elem, onDelete: removeAlertDetails)
+                                .padding(.vertical, -10)
+                                .padding(.horizontal, -10)
+                        }
+                        .listRowSeparator(.hidden)
                         ForEach(sharedData.mensaDays, id: \.self) { elem in
                             mapMensaDayToContentTemplateView(mensaDay: elem, with: mealTemplate)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
+                                .padding(.vertical, -10)
+                                .padding(.horizontal, -10)
                         }
+                        .listRowSeparator(.hidden)
                     }
+                    .listStyle(PlainListStyle())
                 }
                 .refreshable {
                     let currentDate = Date()
                     
-                    var (alertShowing, title, message, queryDate, type) = await decidingNextStep(on: currentDate, on: sharedData)
-                    if overrideOnce {
-                        alertShowing = false
-                        title = ""
-                        message = ""
-                    }
-                    
-                    if !alertShowing || overrideOnce {
-                        overrideOnce = false
+                    if !enforceRefresh {
+                        let (alertShowing, title, message, queryDate, _) = await decidingNextStep(on: currentDate, on: sharedData)
+                        tempData.append(AlertDetails(title: title, errorDescription: message, intentAlert: alertShowing))
+                        if !alertShowing {
+                            let task = Task {
+                                await fetchLatestData(queryDate: queryDate)
+                            }
+                            _ = await task.value
+                        }
+                    } else {
                         let task = Task {
-                            await fetchLatestData(queryDate: queryDate)
+                            await fetchLatestData(queryDate: currentDate)
                         }
                         _ = await task.value
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        isShowingAlert = alertShowing
-                        alertMessage = title
-                        details = AlertDetails(modalType: type, errorDescription: message, queryDate: queryDate)
-                    }
-                }
-                .alert(
-                    alertMessage,
-                    isPresented: $isShowingAlert,
-                    presenting: details
-                ) { details in
-                    switch details.modalType {
-                        case .yesNo:
-                        Button("No",  role: .cancel) {
-                                // Replace
-                        }
-                        Button("Yes") {
-                            overrideOnce = true
-                        }
-                        default:
-                            Button("Ok") {}
-                    }
-                } message: { details in
-                    return Text(details.errorDescription + "(" + {
-                        formatter.dateFormat =  "dd.MM.yyyy"
-                        return formatter.string(from: details.queryDate)
-                    }() + ")")
                 }
             } else if activeMenu == "Experimental" {
-                Text("Experimental")
+                MapView()
             } else if activeMenu == "Settings" {
-                Text("Settings")
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Open AI Key")
+                        .font(.title2)
+                                .bold()
+                                .padding(.horizontal)
+                    Text("Gib hier deinen OpenAI API Key ein, um die KI-Funktionen zu aktivieren. Stelle sicher, dass der Key gültig ist und über die erforderlichen Berechtigungen verfügt.")
+                        .padding(.horizontal)
+                    Text(keyMask)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.gray)
+                        .lineLimit(4)
+                        .frame(height: UIFont.preferredFont(forTextStyle: .body).lineHeight * 4)
+                        .padding()
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                        .padding(.horizontal)
+                    HStack() {
+                        PasteButton(payloadType: String.self) { strings in
+                            let copy: String = strings[0]
+                            let sucess = storeKey(key: "OPENAIKEY", value: strings[0])
+                            isViewingKey = false
+                            keyMask = !sucess ? "*err*" : copy.map {_ in "*" }.joined()
+                        }
+                        .labelStyle(.titleOnly)
+                        .padding(.horizontal)
+                        Button(action: {
+                            if isViewingKey {
+                                isViewingKey = false
+                                keyMask = keyMask.map {_ in "*" }.joined()
+                            } else {
+                                isViewingKey = true
+                                keyMask = retrieveKey(key: "OPENAIKEY") ?? "*empty*"
+                            }
+                        }) {
+                            Text("View")
+                                .buttonStyle(.bordered)
+                                .controlSize(.regular)
+                                .buttonBorderShape(.roundedRectangle)
+                        }
+                    }
+                    Text("Allgemeines")
+                        .font(.title2)
+                                .bold()
+                                .padding(.horizontal)
+                    Text("Stelle hier generelle Funtionen ein um das Anwendungs Erlebnis zu verbessern.")
+                        .padding(.horizontal)
+                    Toggle(isOn: $enforceRefresh) {
+                        Text("Aktualisierung erzwingen")
+                    }
+                    .padding(.horizontal)
+                }
+                
             } else if activeMenu == "About" {
                 Text("About")
             }
@@ -133,7 +175,6 @@ struct ContentView: View {
             HStack(spacing: 10) {
                 ForEach(menuItems, id: \.title) { item in
                     Button(action: {
-                        
                         activeMenu = item.title
                     }) {
                         VStack(spacing: 4) {
@@ -149,7 +190,7 @@ struct ContentView: View {
                         .frame(height: 50)
                         .clipped()
                         .foregroundStyle(.primary)
-                        .foregroundColor(activeMenu == item.title ? .blue : .gray )
+                        .foregroundColor(activeMenu == item.title ? .blue : .gray)
                     }
                 }
             }

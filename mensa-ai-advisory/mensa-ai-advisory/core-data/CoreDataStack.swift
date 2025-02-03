@@ -44,10 +44,10 @@ class CoreDataStack: ObservableObject {
         }
     }
     
-    func add(mealResponse: MealResponse) {
+    func add(mealResponse: MealResponse, queryDate: Date) {
         let newMensaDay = MensaDay(context: persistentContainer.viewContext)
         newMensaDay.id = UUID()
-        newMensaDay.date = Date()
+        newMensaDay.date = queryDate
         newMensaDay.funny_title = mealResponse.funny_title
         newMensaDay.comment = mealResponse.comment
         mealResponse.meals.map {
@@ -72,5 +72,9 @@ class CoreDataStack: ObservableObject {
     func delete(mensaDay: MensaDay) {
         persistentContainer.viewContext.delete(mensaDay)
         save()
+        
+        DispatchQueue.main.async {
+            self.mensaDays.removeAll { $0.objectID == mensaDay.objectID }
+        }
     }
 }

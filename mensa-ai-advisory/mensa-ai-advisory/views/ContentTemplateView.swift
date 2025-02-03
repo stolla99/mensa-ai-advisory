@@ -5,6 +5,8 @@ struct ContentTemplateView: View {
     var date: String
     var timestamp: String
     var content: LocalizedStringKey
+    let reference: MensaDay
+    let onDelete: (MensaDay) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -27,6 +29,13 @@ struct ContentTemplateView: View {
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(Color(.gray).opacity(0.1))
         )
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(role: .destructive) {
+                onDelete(reference)
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
     }
 }
 
@@ -43,7 +52,9 @@ struct ContentTemplateView_Previews: PreviewProvider {
                 - sdf
                 sdf
                 sdf
-                """
+                """,
+            reference: MensaDay(),
+            onDelete: { MensaDay in }
         )
     }
 }

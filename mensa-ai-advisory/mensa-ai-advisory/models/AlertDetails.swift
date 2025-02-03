@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct AlertDetails: Identifiable {
-    let modalType: ModalType
+struct AlertDetails: Identifiable, Equatable {
+    let title: String
     let errorDescription: String
-    let queryDate: Date
+    let intentAlert: Bool
     let id = UUID()
 }

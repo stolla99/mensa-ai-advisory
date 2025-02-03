@@ -35,25 +35,29 @@ func isPastTwoPM(on date: Date) -> Bool {
     return date > twoPMDate
 }
 
-func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async -> (isAlert: Bool, title: String, message: String, date: Date, type: ModalType) {
+func isDateInSharedData(on queryDate: Date, on sharedData: CoreDataStack) -> Bool {
     let alreadyCheckedToday: Bool = sharedData.mensaDays.map {
         return Calendar.current.isDate(queryDate, inSameDayAs: $0.date ?? Date.distantPast)
     }.reduce(false, { $0 || $1 })
-    
-    if alreadyCheckedToday {
-        if isPastTwoPM(on: queryDate) {
+    return alreadyCheckedToday
+}
+
+func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async -> (isAlert: Bool, title: String, message: String, date: Date, type: ModalType) {
+    let queryDateSucc: Date = Calendar.current.date(byAdding: .day, value: 1, to: queryDate) ?? Date.distantPast
+    if isDateInSharedData(on: queryDate, on: sharedData) {
+        if isPastTwoPM(on: queryDate) && !isDateInSharedData(on: queryDateSucc, on: sharedData) {
             return (
-                true,
-                "Information",
-                "Want to check for tomorrow? If yes next refresh will trigger the fetch data for tomorrow",
-                Calendar.current.date(byAdding: .day, value: 1, to: queryDate) ?? Date.distantPast,
+                false,
+                "CHECK 00",
+                "Today already checked checking tomorrow. Today -> Tomorrow -> Checking",
+                queryDateSucc,
                 .yesNo
             )
         } else {
             return (
                 true,
-                "Proceed?",
-                "You already checked the menu today. If proceeding next refresh will trigger the update regardless",
+                "OVERRIDE",
+                "You already checked the menu today and tomorrow. Today -> Tomorrow -> Nothing",
                 queryDate,
                 .yesNo
             )
@@ -61,8 +65,8 @@ func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async ->
     } else {
         return (
             false,
-            "",
-            "",
+            "CHECK 24",
+            "Checking menu for today. Today -> Checking",
             queryDate,
             .okOnly
         )

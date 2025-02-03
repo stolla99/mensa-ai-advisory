@@ -39,7 +39,9 @@ func mapMensaDayToContentTemplateView(mensaDay: MensaDay, with mealTemplate: Str
         title: mensaDay.funny_title ?? "",
         date: date,
         timestamp: timestamp,
-        content: LocalizedStringKey.init(content)
+        content: LocalizedStringKey.init(content),
+        reference: mensaDay,
+        onDelete: CoreDataStack.shared.delete
     )
     return newContent
 }

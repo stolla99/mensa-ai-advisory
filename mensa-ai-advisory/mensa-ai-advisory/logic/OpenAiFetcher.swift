@@ -13,8 +13,6 @@ extension HTTPField.Name {
 class OpenAiFetcher: ObservableObject {
     @Published var responseStrings: MealResponse = MealResponse(meals: [], comment: "", funny_title: "Nothing to see here")
     
-    var openAiKey: String
-    
     let base = "api.openai.com/v1/threads/"
     let createAndRunThreadEndpoint = "runs"
     let retrieveThreadRunEndpoint = "{thread_id}/runs/{run_id}"
@@ -23,20 +21,6 @@ class OpenAiFetcher: ObservableObject {
     let openAImodel = "gpt-4o-mini"
     let openAIAssistant = "asst_PBj8qdbCoPXkwyBiSHCp45BO"
     
-    init(openAiKey: String) {
-        self.openAiKey = openAiKey
-    }
-
-    convenience init() {
-        var key: String = ""
-        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
-           let dict = NSDictionary(contentsOfFile: path) as? [String: Any],
-           let retrievedKey = dict["OPEN_AI_API_KEY"] as? String {
-            key = retrievedKey
-        }
-        self.init(openAiKey: key)
-    }
-    
     func jsonPrint(data: Data) -> String {
         let jsonString = String(data: data, encoding: .utf8)
         return jsonString ?? "No JSON"
@@ -44,7 +28,7 @@ class OpenAiFetcher: ObservableObject {
     
     func createAndRunThread(content: String) async throws -> ([String: Any], Data) {
         var req = HTTPRequest(method: .post, scheme: "https", authority: base, path: createAndRunThreadEndpoint)
-        req.headerFields[.authorization] = "Bearer " + openAiKey
+        req.headerFields[.authorization] = "Bearer " + (retrieveKey(key: "OPENAIKEY") ?? "")
         req.headerFields[.openaibeta] = "assistants=v2"
         req.headerFields[.contentType] = "application/json"
         
@@ -73,7 +57,7 @@ class OpenAiFetcher: ObservableObject {
             .replacingOccurrences(of: "{run_id}", with: runId)
         
         var req = HTTPRequest(method: .get, scheme: "https", authority: base, path: preparedUrl)
-        req.headerFields[.authorization] = "Bearer " + openAiKey
+        req.headerFields[.authorization] = "Bearer " + (retrieveKey(key: "OPENAIKEY") ?? "")
         req.headerFields[.openaibeta] = "assistants=v2"
         
         let (responseBody, response) = try await URLSession.shared.data(for: req)
@@ -88,7 +72,7 @@ class OpenAiFetcher: ObservableObject {
             .replacingOccurrences(of: "{thread_id}", with: threadId)
         
         var req = HTTPRequest(method: .get, scheme: "https", authority: base, path: preparedUrl)
-        req.headerFields[.authorization] = "Bearer " + openAiKey
+        req.headerFields[.authorization] = "Bearer " + (retrieveKey(key: "OPENAIKEY") ?? "")
         req.headerFields[.openaibeta] = "assistants=v2"
         req.headerFields[.contentType] = "application/json"
         
@@ -130,8 +114,8 @@ class OpenAiFetcher: ObservableObject {
             return defaultMealResponse
         }
         
-        let mealResonse = try JSONDecoder().decode(MealResponse.self, from: text.data(using: .utf8)!)
-        return mealResonse
+        let mealResponse = try JSONDecoder().decode(MealResponse.self, from: text.data(using: .utf8)!)
+        return mealResponse
     }
     
     func pollUntilStatusCompleted(threadId: String, runId: String, interval: TimeInterval) async throws {
