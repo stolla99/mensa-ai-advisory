@@ -12,7 +12,7 @@
 
 🔆Upcoming 
 ### 📸 Screenshots
-
+![Mensa AI Preview](images/PreviewApp.png)
 
 ### 🛠️ Installation
 If you'd like to try this app on your own device, you'll need to enable **developer mode** on your phone (**⚠️ Proceed with caution! ⚠️**). Please note that the application is not yet available on the App Store. 
