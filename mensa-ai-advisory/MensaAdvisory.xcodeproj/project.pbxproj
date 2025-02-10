@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30307342D55165B008FC15C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30307332D55165B008FC15C /* AboutView.swift */; };
 		C30D49E32CCD37BB00D11529 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = C30D49E22CCD37BB00D11529 /* OpenAI */; };
 		C314CBC62CCD1494005C525B /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = C314CBC52CCD1494005C525B /* Down */; };
 		C314CBC82CCD210D005C525B /* Experimental.swift in Sources */ = {isa = PBXBuildFile; fileRef = C314CBC72CCD210D005C525B /* Experimental.swift */; };
@@ -30,6 +31,7 @@
 		C3B0C6262CCFC962002FE29C /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0C6252CCFC962002FE29C /* NIOFoundationCompat */; };
 		C3B0C6292CCFC9BB002FE29C /* HTTPTypes in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0C6282CCFC9BB002FE29C /* HTTPTypes */; };
 		C3B0C62B2CCFC9BB002FE29C /* HTTPTypesFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = C3B0C62A2CCFC9BB002FE29C /* HTTPTypesFoundation */; };
+		C3B3D68A2D5969D10002B0CF /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B3D6892D5969D10002B0CF /* LoaderView.swift */; };
 		C3C9294F2CD3E3380093CD0C /* MensaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3C9294D2CD3E3380093CD0C /* MensaModel.xcdatamodeld */; };
 		C3F0EFBA2CD6B7310055BA58 /* OpenAiFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFB72CD6B7310055BA58 /* OpenAiFetcher.swift */; };
 		C3F0EFBB2CD6B7310055BA58 /* WebpageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F0EFB82CD6B7310055BA58 /* WebpageFetcher.swift */; };
@@ -60,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C30307332D55165B008FC15C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		C314CBC72CCD210D005C525B /* Experimental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experimental.swift; sourceTree = "<group>"; };
 		C34BFDD02D50AED100419881 /* AlertTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTemplateView.swift; sourceTree = "<group>"; };
 		C34BFDE02D50F80E00419881 /* SecretStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStack.swift; sourceTree = "<group>"; };
@@ -72,6 +75,9 @@
 		C386F6FE2C07E2FC00B5562D /* mensa-ai-advisoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mensa-ai-advisoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C386F7022C07E2FC00B5562D /* mensa_ai_advisoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITests.swift; sourceTree = "<group>"; };
 		C386F7042C07E2FC00B5562D /* mensa_ai_advisoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mensa_ai_advisoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C3B3D6742D593B140002B0CF /* mensa-ai-advisory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mensa-ai-advisory.entitlements"; sourceTree = "<group>"; };
+		C3B3D6752D593DEE0002B0CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C3B3D6892D5969D10002B0CF /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C3C9294E2CD3E3380093CD0C /* MensaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MensaModel.xcdatamodel; sourceTree = "<group>"; };
 		C3F0EFB72CD6B7310055BA58 /* OpenAiFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAiFetcher.swift; sourceTree = "<group>"; };
 		C3F0EFB82CD6B7310055BA58 /* WebpageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageFetcher.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 		C386F6DB2C07E2FB00B5562D = {
 			isa = PBXGroup;
 			children = (
+				C3B3D6742D593B140002B0CF /* mensa-ai-advisory.entitlements */,
 				C386F6E62C07E2FB00B5562D /* mensa-ai-advisory */,
 				C386F6F72C07E2FC00B5562D /* mensa-ai-advisoryTests */,
 				C386F7012C07E2FC00B5562D /* mensa-ai-advisoryUITests */,
@@ -150,6 +157,7 @@
 		C386F6E62C07E2FB00B5562D /* mensa-ai-advisory */ = {
 			isa = PBXGroup;
 			children = (
+				C3B3D6752D593DEE0002B0CF /* Info.plist */,
 				C3F0EFC62CD6BB900055BA58 /* models */,
 				C3F0EFC22CD6B7450055BA58 /* views */,
 				C3F0EFBD2CD6B73B0055BA58 /* core-data */,
@@ -211,7 +219,9 @@
 		C3F0EFC22CD6B7450055BA58 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				C3B3D6892D5969D10002B0CF /* LoaderView.swift */,
 				C34BFDE22D51049A00419881 /* MapView.swift */,
+				C30307332D55165B008FC15C /* AboutView.swift */,
 				C3F0EFBF2CD6B7450055BA58 /* ContentTemplateView.swift */,
 				C34BFDD02D50AED100419881 /* AlertTemplateView.swift */,
 				C3F0EFC02CD6B7450055BA58 /* ContentView.swift */,
@@ -372,6 +382,8 @@
 				C34BFDE32D51049D00419881 /* MapView.swift in Sources */,
 				C3F0EFBA2CD6B7310055BA58 /* OpenAiFetcher.swift in Sources */,
 				C3F0EFBB2CD6B7310055BA58 /* WebpageFetcher.swift in Sources */,
+				C3B3D68A2D5969D10002B0CF /* LoaderView.swift in Sources */,
+				C30307342D55165B008FC15C /* AboutView.swift in Sources */,
 				C34BFDE12D50F81500419881 /* SecretStack.swift in Sources */,
 				C3C9294F2CD3E3380093CD0C /* MensaModel.xcdatamodeld in Sources */,
 				C314CBC82CCD210D005C525B /* Experimental.swift in Sources */,
@@ -535,14 +547,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "mensa-ai-advisory/mensa-ai-advisory.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mensa-ai-advisory/Preview Content\"";
+				DEVELOPMENT_TEAM = 48ZUJ6B324;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mensa-ai-advisory/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mensa Advisory";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -552,6 +571,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,14 +583,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = "mensa-ai-advisory/mensa-ai-advisory.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mensa-ai-advisory/Preview Content\"";
+				DEVELOPMENT_TEAM = 48ZUJ6B324;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mensa-ai-advisory/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mensa Advisory";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -580,6 +607,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "stolla.mensa-ai-advisory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

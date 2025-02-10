@@ -13,6 +13,7 @@ extension HTTPField.Name {
 class OpenAiFetcher: ObservableObject {
     @Published var responseStrings: MealResponse = MealResponse(meals: [], comment: "", funny_title: "Nothing to see here")
     
+    let models = "api.openai.com/v1/models"
     let base = "api.openai.com/v1/threads/"
     let createAndRunThreadEndpoint = "runs"
     let retrieveThreadRunEndpoint = "{thread_id}/runs/{run_id}"
@@ -24,6 +25,18 @@ class OpenAiFetcher: ObservableObject {
     func jsonPrint(data: Data) -> String {
         let jsonString = String(data: data, encoding: .utf8)
         return jsonString ?? "No JSON"
+    }
+    
+    func validateApiKey() async -> Bool  {
+        do {
+            var req = HTTPRequest(method: .get, scheme: "https", authority: models, path: "")
+            req.headerFields[.authorization] = "Bearer " + (retrieveKey(key: "OPENAIKEY") ?? "")
+            
+            let (_, response) = try await URLSession.shared.data(for: req)
+            return (200...299).contains(response.status.code)
+        } catch {
+            return false
+        }
     }
     
     func createAndRunThread(content: String) async throws -> ([String: Any], Data) {

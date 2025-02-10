@@ -77,4 +77,10 @@ class CoreDataStack: ObservableObject {
             self.mensaDays.removeAll { $0.objectID == mensaDay.objectID }
         }
     }
+    
+    func deleteAll() {
+        for mensaDay in mensaDays {
+            delete(mensaDay: mensaDay)
+        }
+    }
 }

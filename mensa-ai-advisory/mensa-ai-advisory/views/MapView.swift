@@ -52,6 +52,18 @@ struct MapView: View {
                         .padding(5)
                 }
             }
+            Annotation("Nachbrenner; † 02/2025",
+                       coordinate: CLLocationCoordinate2D(
+                    latitude: 49.425102036996904,
+                    longitude: 7.754040238847586)
+            ) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.yellow)
+                    Text("☠️")
+                        .padding(5)
+                }
+            }
         }
     }
 }

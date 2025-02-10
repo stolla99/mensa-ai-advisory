@@ -7,6 +7,9 @@ struct ContentTemplateView: View {
     var content: LocalizedStringKey
     let reference: MensaDay
     let onDelete: (MensaDay) -> Void
+    
+    @State private var isSharing = false
+    @State private var generatedImage: UIImage? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -41,20 +44,21 @@ struct ContentTemplateView: View {
 
 struct ContentTemplateView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentTemplateView(
-            title: "SwiftUI Recommendations Recommendations Recommendations",
-            date: "October 26, 2024",
-            timestamp: "10:00 AM",
-            content: """
-                import 
-                *sd*
-                - sdf
-                - sdf
-                sdf
-                sdf
-                """,
-            reference: MensaDay(),
-            onDelete: { MensaDay in }
-        )
+            ContentTemplateView(
+                title: "SwiftUI Recommendations Recommendations Recommendations",
+                date: "October 26, 2024",
+                timestamp: "10:00 AM",
+                content: """
+                    import 
+                    *sd*
+                    - sdf
+                    - sdf
+                    sdf
+                    sdf
+                    """,
+                reference: MensaDay(),
+                onDelete: { MensaDay in }
+            )
+        
     }
 }

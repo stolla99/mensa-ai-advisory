@@ -49,7 +49,7 @@ func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async ->
             return (
                 false,
                 "CHECK 00",
-                "Today already checked checking tomorrow. Today -> Tomorrow -> Checking",
+                "Heute hast du schon angerufen, rufe Daten für morgen ab. Heute → Morgen → Abrufen",
                 queryDateSucc,
                 .yesNo
             )
@@ -57,7 +57,7 @@ func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async ->
             return (
                 true,
                 "OVERRIDE",
-                "You already checked the menu today and tomorrow. Today -> Tomorrow -> Nothing",
+                "Du hast bereits das Menü für heute und morgen abgerufen. Heute → Morgen → Nichts zu tun",
                 queryDate,
                 .yesNo
             )
@@ -66,7 +66,7 @@ func decidingNextStep(on queryDate: Date, on sharedData: CoreDataStack) async ->
         return (
             false,
             "CHECK 24",
-            "Checking menu for today. Today -> Checking",
+            "Rufe Mensa Menü für heute ab. Heute → Abrufen",
             queryDate,
             .okOnly
         )
